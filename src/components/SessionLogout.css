@@ -1,0 +1,62 @@
+/* src/components/SessionLogout.css */
+.session-logout-container {
+  width: 80%;
+    display: block;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #525252;
+    font-family: sans-serif;
+    padding-top: 20px; /* More padding */
+    box-sizing: border-box;
+    margin: auto;
+}
+
+.upper-found-container{
+  width: 100%;
+  background-color: #525252;
+}
+
+.session-logout-container h2 {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 0.3rem;
+  text-align: start;
+}
+
+.session-logout-container span {
+  font-size: 1.1rem;
+  color: #343a40;
+}
+
+.session-logout-container p {
+  font-size: 1.1rem;
+  color: #ff9f9f;
+  margin-top: 10px;
+  margin-bottom: 0.9rem; /* More space before the link */
+  text-align: start;
+}
+
+/* Style for the icon */
+.logout-icon {
+  margin-bottom: 0.3rem;
+  color: #ff9f9f;/* Bootstrap danger color (red) */
+}
+
+.session-logout-container a {
+    color: #da7d04;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block; /* Allows for padding and margin */
+    padding: 10px 20px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #2988cc, #d3bf8c);/* Bootstrap primary color */
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.session-logout-container a:hover {
+    background-color: #0056b3;
+     text-decoration: none; /* No underline on hover for the button */
+}

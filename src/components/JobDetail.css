@@ -1,0 +1,40 @@
+/*//client/src/components/JobDetail.css */
+.job-detail-container {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px; /* Or whatever width you prefer */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.job-detail-container h2 {
+  color: var(--heading-color); /* Use your defined variable if available */
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.job-detail-container p {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.job-detail-container strong {
+  font-weight: bold;
+}
+
+.job-detail-container a {
+  display: inline-block; /* Allows setting margin/padding */
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: var(--primary-color, #007bff); /* Fallback to blue if variable is not defined */
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.job-detail-container a:hover {
+  background-color: var(--button-hover-color, #0056b3); /* Fallback to darker blue */
+}

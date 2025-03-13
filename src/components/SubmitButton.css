@@ -1,0 +1,49 @@
+/*//client/src/components/SubmitButton.css */
+.submit-button-jobseeker {
+    cursor: pointer;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;  
+    background-color: #3F51B5;
+    color: #ffffff;
+    /* Change the cursor to a hand on hover */
+    /* Add other styles here, such as padding, background color, etc. */
+}
+
+.submit-button:hover {
+    cursor: pointer;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;  
+    background-color: #444444;
+    color: #ffffff;
+    font-weight: bolder;
+    /* Change the cursor to a hand on hover */
+    /* Add other styles here, such as padding, background color, etc. */
+}
+
+.submit-button-employer {
+    cursor: pointer;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;  
+    background-color: #B8860B;
+    color: #ffffff;
+    font-weight: bolder;
+    /* Change the cursor to a hand on hover */
+    /* Add other styles here, such as padding, background color, etc. */
+}
+
+.submit-button:disabled { /* Style for disabled button */
+    cursor: not-allowed; /* Indicate it's not clickable */
+    opacity: 0.6;       /* Make it look visually disabled */
+}

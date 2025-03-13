@@ -1,0 +1,78 @@
+.deleted-recruiter-list {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  background-color: #6c757d;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: var(--secondary-color);
+  color: var(--heading-color);
+}
+
+td .action-buttons {
+  display: flex; /* Use flexbox for inline alignment */
+  gap: 5px; /* Space between buttons */
+}
+
+td button {
+  padding: 5px 10px;
+  width: 120px; /* Fixed width for consistent size */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-align: center; /* Center text within fixed width */
+}
+
+td button.restore-button {
+  background-color: #28a745; /* Green for restore */
+  color: white;
+}
+
+td button.restore-button:hover {
+  background-color: #218838;
+}
+
+td button.perm-delete-button {
+  background-color: var(--error-color);
+  color: white;
+}
+
+td button.perm-delete-button:hover {
+  background-color: #c82333;
+}

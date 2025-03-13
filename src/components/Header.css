@@ -1,0 +1,322 @@
+/* Header.css */
+.header {
+    background-color: #000000;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-all{
+    background-color: #000000;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;   
+    margin: auto;
+}
+
+.logo-link {
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.logo {
+    width: 10px;
+    height: 10px;
+}
+
+.logo-text-open {
+    background: linear-gradient(135deg, #33AAFF, #ffe7aa); /* Lighter blue shades */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+.logo-text-hire {
+    color: var(--primary-color);
+}
+
+.account-icon {
+    font-size: 24px; /* Adjust icon size */
+    color: #ffffff;      /* Set icon color */
+    vertical-align: middle; /* Align icon vertically within the button text */
+    /* Add any other icon styling you need */
+}
+
+.header-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-left: 2%;
+}
+
+.header-right-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-right-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-link {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 6px 10px;
+    position: relative;
+    transition: color 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.header-link:hover,
+.header-link:focus {
+    color: var(--primary-color);
+}
+
+.header-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1.5px;
+    bottom: -2px;
+    left: 50%;
+    background: var(--primary-color);
+    transition: width 0.3s ease, left 0.3s ease, background-color 0.3s ease;
+    background-color: transparent;
+}
+
+.header-link:hover::after,
+.header-link:focus::after {
+    width: 100%;
+    left: 0;
+    background-color: var(--primary-color);
+}
+
+.cta-button {
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 5px;
+    text-transform: capitalize;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.cta-button:hover,
+.cta-button:focus {
+    background: #0056b3;
+}
+
+.logout-button {
+    background-color: var(--error-color);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    width: auto;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.logout-button:hover,
+.logout-button:focus {
+    background-color: #c82333;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: normal;
+    padding: 6px 10px;
+    border-radius: 0;
+    position: relative;
+    color: #ffffff;
+}
+
+.dropdown-button:hover,
+.dropdown-button:focus {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--primary-color);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 5px;
+    padding: 5px 0;
+    min-width: 180px;
+    right: 0;
+    top: 100%;
+    border: 1px solid #e0e0e0;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-button:focus+.dropdown-content,
+.dropdown-content:hover {
+    display: block;
+}
+
+.dropdown-item,
+.dropdown-item-employer {
+    display: block;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: #333;
+    white-space: nowrap;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #f5f5f5;
+    color: var(--primary-color);
+}
+
+.dropdown-item-employer:hover,
+.dropdown-item-employer:focus {
+    background-color: #f9f9f9;
+    color: #B8860B;
+}
+
+.account-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    padding: 15px;
+    min-width: 600px;
+    right: 0;
+    top: 100%;
+    border: 1px solid #e0e0e0;
+    z-index: 1000;
+}
+
+.dropdown.account-dropdown:hover .account-dropdown-content,
+.dropdown.account-dropdown:focus-within .account-dropdown-content {
+    display: block;
+}
+
+.account-columns {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.account-column {
+    flex: 1;
+    min-width: 0;
+}
+
+.column-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.column-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.column-items li {
+    padding: 6px 0;
+}
+
+.column-items .dropdown-item-employer {
+    padding: 6px 10px;
+    display: block;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px;
+    }
+
+    .header-right {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .header-right-left,
+    .header-right-right {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 0;
+    }
+
+    .header-left {
+        padding-left: 0;
+    }
+
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+        width: 100%;
+        min-width: auto;
+        max-width: none;
+        right: auto;
+        left: auto;
+        top: auto;
+        margin-left: 0;
+        border-radius: 0;
+        padding: 0;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .account-dropdown-content {
+        position: static;
+        min-width: 100%;
+        box-shadow: none;
+        border: none;
+        border-top: 1px solid #e0e0e0;
+        padding: 10px;
+    }
+
+    .account-columns {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .dropdown-item,
+    .dropdown-item-employer {
+        padding: 10px 15px;
+    }
+}

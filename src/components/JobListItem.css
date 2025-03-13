@@ -1,0 +1,65 @@
+/* client/src/components/JobListItem.css */
+.job-list-item {
+  border: 2px solid transparent;
+  background: #ffffff;
+  transition: border 0.3s ease, transform 0.3s ease;
+}
+
+.job-list-item:hover {
+  border: 2px solid transparent;
+  border-image: linear-gradient(45deg, #3F51B5, #B8860B) 1;
+  transform: translateY(-5px) rotate(1deg);
+}
+
+.job-list-item h3 {
+  font-size: 1.4rem;
+  background: linear-gradient(90deg, var(--gradient-start, #3F51B5), var(--gradient-end, #B8860B));
+  -webkit-background-clip: text;
+  background-clip: text; /* Standard property */
+  color: transparent; /* Clips gradient to text */
+  -webkit-text-fill-color: transparent; /* Extra WebKit support */
+  display: inline-block; /* Ensures gradient applies correctly */
+}
+
+.job-list-item p {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.job-list-item strong {
+  font-weight: bold;
+}
+
+.job-list-item-actions {
+  margin-top: 15px;
+  display: flex; /* Use flexbox for button layout */
+  gap: 10px; /* Space between buttons */
+}
+
+.job-list-item-actions a,
+.job-list-item-actions button {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  text-decoration: none; /* Remove underline from Link */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+/* Style for the Edit button (Link component) */
+.edit-button, .delete-button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+.edit-button {
+  background: linear-gradient(45deg, #28a745, #B8860B);
+}
+.edit-button:hover {
+  background: linear-gradient(45deg, #218838, #8B6508);
+}
+.delete-button {
+  background: linear-gradient(45deg, #dc3545, #ff6b6b);
+}
+.delete-button:hover {
+  background: linear-gradient(45deg, #c82333, #ff8787);
+}

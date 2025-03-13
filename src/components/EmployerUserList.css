@@ -1,0 +1,125 @@
+.employer-user-list {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.create-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none; /* Ensure Link doesn't have underline */
+    display: inline-block; /* Consistent rendering for Link and button */
+    font-size: 1rem; /* Added: Standard font size (16px typically) */
+}
+
+.create-button:hover {
+    background-color: var(--button-hover-color);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: var(--secondary-color);
+    color: var(--heading-color);
+}
+
+td button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+td button:first-child {
+    background-color: #28a745; /* Edit button */
+    color: white;
+}
+
+td button:first-child:hover {
+    background-color: #218838;
+}
+
+td button:last-child {
+    background-color: var(--error-color); /* Delete button */
+    color: white;
+}
+
+td button:last-child:hover {
+    background-color: #c82333;
+}
+
+.temp-delete-button {
+    background-color: #ffc107; /* Yellow for temporary */
+    color: #333;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.temp-delete-button:hover {
+    background-color: #e0a800;
+}
+
+.perm-delete-button {
+    background-color: var(--error-color); /* Red for permanent */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.perm-delete-button:hover {
+    background-color: #c82333;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.deleted-recruiters-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #6c757d; /* Gray, matching recruiter-management-button */
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.deleted-recruiters-button:hover {
+    background-color: #5a6268;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-content.form-container {
+    text-align: left; /* Override center alignment from ConfirmationModal.css */
+}
+
+.modal-content.form-container h3 {
+    text-align: center; /* Keep title centered */
+}

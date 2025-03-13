@@ -1,0 +1,53 @@
+/*Style for employer job list*/
+.employer-job-list{
+  list-style: none;
+  padding: 0
+}
+
+.job-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.share-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.share-button:hover {
+  background-color: #0056b3;
+}
+
+.no-recruiters-message {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.share-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.temp-delete-button {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.temp-delete-button:hover {
+  background-color: #e0a800;
+}
+
+.perm-delete-button {
+  background-color: var(--error-color);
+  color: white;
+}
+
+.perm-delete-button:hover {
+  background-color: #c82333;
+}

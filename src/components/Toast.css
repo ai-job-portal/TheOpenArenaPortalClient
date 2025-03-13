@@ -1,0 +1,42 @@
+/* client/src/components/Toast.css */
+.toast-container {
+  position: fixed;
+  top: 20px; /* Maintain the top spacing */
+  /* Change from right: 20px; to centering: */
+  left: 50%;
+  transform: translateX(-50%);
+
+  z-index: 1100;
+  padding: 15px 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: toast-in-out 3s forwards;
+  /* Removed max-width to allow content to determine width */
+  width: auto; /* Allow width to be determined by content */
+  white-space: nowrap; /* Prevent message wrapping */
+}
+
+/* Different styles for different types */
+.toast-success {
+  background-color: #28a745; /* Green */
+  color: white;
+}
+
+.toast-error {
+  background-color: #dc3545; /* Red */
+  color: white;
+}
+
+.toast-info {
+  background-color: #17a2b8; /* Blue */
+  color: white;
+}
+/* Add more styles for other types */
+
+@keyframes toast-in-out {
+  0% { opacity: 0; transform: translate(-50%, -20px); } /* Start off-screen and centered */
+  10% { opacity: 1; transform: translate(-50%, 0); }   /* Fade in and move down */
+  90% { opacity: 1; transform: translate(-50%, 0); }   /* Stay visible */
+  100% { opacity: 0; transform: translate(-50%, -20px); } /* Fade out and move up */
+}
