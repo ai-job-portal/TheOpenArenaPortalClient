@@ -7,8 +7,8 @@
     --accent-color-employer: #006064;
     --button-hover-color: #0056b3;
     --error-color: #dc3545;
-    --gradient-start: #3F51B5;
-    --gradient-end: #B8860B;
+    --gradient-start: #0056b3;
+    --gradient-end: #8B6508;
   }
   
   body {
@@ -394,18 +394,19 @@
   .submit-button-employer {
     width: 100%;
     padding: 14px 20px;
-    font-size: 1rem;
+    font-size: 1.3rem;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
     color: white;
-    transition: background 0.3s ease, transform 0.3s ease;
   }
   
   .submit-button-employer:hover {
+    padding: 14px 20px;
+    font-size: 1.3rem;
+    border-radius: 8px;
     background: linear-gradient(45deg, #0056b3, #8B6508);
-    transform: scale(1.02);
   }
   
   /* Profile and Other Containers */

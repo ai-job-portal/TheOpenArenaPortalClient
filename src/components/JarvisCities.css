@@ -1,0 +1,218 @@
+/* src/components/JarvisCities.css */
+
+.jarvis-cities-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.jarvis-cities-card h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #333;
+}
+
+/* Form Styles (Shared by Add and Search) */
+.add-city-form,
+.search-form-cities {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+}
+
+.add-city-form label,
+.search-form-cities label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.add-city-form input,
+.search-form-cities input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px; /* Consistent spacing */
+    font-size: 1rem;
+    box-sizing: border-box; /* Include padding and border in width */
+    width: 100%; /* Make inputs fill the container */
+}
+
+.add-city-form button,
+.search-form-cities button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%; /* Make buttons fill the container */
+}
+.add-city-form button:hover,
+.search-form-cities button:hover {
+    background-color: #0056b3;
+}
+
+/* Cities List */
+.cities-list {
+    margin-top: 1rem;
+}
+
+.cities-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.cities-list li {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between; /* Space out content */
+    align-items: center; /* Vertically center content */
+}
+
+/* Container for city name */
+.city-name {
+    flex-grow: 1; /* Allow city name to take up available space */
+    margin-right: 10px; /* Add some space before the buttons */
+    overflow: hidden;  /*Prevent long city name to flow*/
+    text-overflow: ellipsis; /*Add ... for long city name*/
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    gap: 5px; /* Space between buttons */
+    align-items: center; /* Ensure buttons are vertically aligned */
+    flex-shrink: 0; /* Prevent buttons from shrinking */
+}
+
+
+.cities-list li button {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    border: none; /* Remove default border */
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap; /* Prevent button text from wrapping */
+}
+
+.cities-list li button:first-of-type {
+  /* Edit button */
+    background-color: #007bff;
+    color: white;
+}
+.cities-list li button:first-of-type:hover {
+    background-color: #0056b3;
+}
+.cities-list li button:last-child {
+    /* Delete button */
+    background-color: #dc3545;
+    color: white;
+}
+
+.cities-list li button:last-child:hover {
+    background-color: #c82333;
+}
+
+/* Edit form, inside list item */
+.cities-list li form {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+}
+
+.cities-list li form input {
+    flex: 1;
+    margin-right: 5px;
+    padding: 8px; /* Smaller padding for edit inputs */
+    font-size: 0.9rem; /* Smaller font size */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Important! */
+}
+
+.cities-list li form button {
+  /* Styles for Save and Cancel buttons in edit mode */
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+}
+
+.error-message {
+    color: red;
+    margin-top: 0.5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .jarvis-cities-card {
+    padding: 15px;
+    max-width: 100%;
+    margin: 10px;
+  }
+ .add-city-form label, .search-form-cities label{
+        font-size: 12px;
+    }
+  .add-city-form input,
+  .search-form-cities input {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .add-city-form button,
+  .search-form-cities button {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .cities-list li {
+    padding: 8px;
+    font-size: 0.9rem;
+      flex-direction: column;
+      align-items: flex-start;
+  }
+    .button-container {
+        width: 100%;
+        margin-bottom: 0.5rem;
+        justify-content: flex-end;
+    }
+  .cities-list li button {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+     .city-name{
+      margin-right: 0px;
+    }
+    .cities-list li form input{
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .jarvis-cities-card {
+        padding: 10px;
+        margin: 5px;
+    }
+     .add-city-form input, .search-form-cities input {
+       font-size: 12px;
+        padding: 6px;
+      }
+    .add-city-form button, .search-form-cities button {
+       font-size: 12px;
+        padding: 6px;
+    }
+     .cities-list li button{
+        font-size: 10px;
+    }
+}

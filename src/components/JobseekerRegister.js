@@ -23,7 +23,7 @@ function JobseekerRegister() {
         setLoading(true);
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/register/jobseeker`, { // Changed endpoint
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/jobseeker/register`, { // Changed endpoint
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

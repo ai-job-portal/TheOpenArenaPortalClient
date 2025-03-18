@@ -11,7 +11,7 @@ function SessionLogout() {
       <LogOut size={48} className="logout-icon" /> {/* Add the icon */}
       <h2>Session Expired</h2>
       <p>Your session has timed out, or you have been logged out.</p>
-      <span><Link to="/login">Login again</Link></span>
+      <span><Link to="/">Login again</Link></span>
     </div>
     </div>
   );

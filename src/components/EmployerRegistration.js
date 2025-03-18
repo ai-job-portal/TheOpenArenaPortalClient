@@ -77,24 +77,24 @@ function EmployerRegistration() {
     setLoading(true);
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/employers`, {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/employer/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          company_name: companyName,
+          companyName: companyName,
           email,
           website,
           description,
           industry,
-          company_size: companySize,
+          companySize: companySize,
           location,
-          admin_username: adminUsername,
-          admin_email: adminEmail,
-          admin_password: adminPassword,
-          admin_name: adminName,
-          admin_mobile: adminMobile,
+          adminUsername: adminUsername,
+          adminEmail: adminEmail,
+          adminPassword: adminPassword,
+          adminName: adminName,
+          adminMobile: adminMobile,
         }),
       });
 

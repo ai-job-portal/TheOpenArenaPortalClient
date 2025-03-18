@@ -1,0 +1,54 @@
+/* src/components/JarvisDashboard.css */
+.jarvis-dashboard-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin: 20px auto; /* Add some margin */
+}
+
+.jarvis-dashboard-card h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 30px;
+}
+
+.jarvis-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 20px;
+    text-align: left;
+}
+
+.jarvis-stat-item {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.jarvis-stat-label {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+.jarvis-stat-value {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .jarvis-stats {
+        grid-template-columns: repeat(1, 1fr); /* One column on smaller screens */
+    }
+    .jarvis-dashboard-card{
+        margin: 10px;
+    }
+}

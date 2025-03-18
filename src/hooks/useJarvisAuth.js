@@ -1,17 +1,25 @@
-import { createContext, useState, useContext, useCallback, useEffect, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import {
+    createContext,
+    useState,
+    useContext,
+    useCallback,
+    useEffect,
+    useMemo,
+} from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const JobseekerAuthContext = createContext(null);
+const JarvisAuthContext = createContext(null);
 
-export const JobseekerAuthProvider = ({ children }) => {
-    const [jobseeker, setJobseeker] = useState(null);
+export const JarvisAuthProvider = ({ children }) => {
+    const [jarvisUser, setJarvisUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080/api';
+    const API_BASE_URL =
+        process.env.REACT_APP_API_BASE_URL || "http://localhost:8080/api";
 
     // Add state to cache the CSRF token
     const [csrfToken, setCsrfToken] = useState(null);
@@ -23,7 +31,7 @@ export const JobseekerAuthProvider = ({ children }) => {
                 withCredentials: true
             });
             if (response.status === 200) {
-                const token = response.data.token; // Adjust based on your API response structure
+                const token = response.data.token;
                 setCsrfToken(token);
                 return token;
             }
@@ -47,7 +55,7 @@ export const JobseekerAuthProvider = ({ children }) => {
         const instance = axios.create({
             baseURL: API_BASE_URL,
             withCredentials: true,
-            headers: { 'Content-Type': 'application/json' },
+            headers: { "Content-Type": "application/json" },
             timeout: 10000
         });
 
@@ -64,10 +72,12 @@ export const JobseekerAuthProvider = ({ children }) => {
             (error) => Promise.reject(error)
         );
 
+        // Improved response interceptor to handle CSRF token expiration
         instance.interceptors.response.use(
             (response) => response,
             async (error) => {
                 if (error.response?.status === 403 && csrfToken) {
+                    // Clear cached token and retry once
                     setCsrfToken(null);
                     const token = await fetchCsrfToken();
                     if (token) {
@@ -91,71 +101,74 @@ export const JobseekerAuthProvider = ({ children }) => {
 
     const logout = useCallback(async () => {
         try {
-            await api.post('/auth/logout');
+            await api.post("/auth/logout");
         } catch (err) {
             console.error("Logout error:", err);
         } finally {
-            setJobseeker(null);
+            setJarvisUser(null);
             setIsAuthenticated(false);
             setCsrfToken(null); // Clear CSRF token on logout
-            navigate('/');
+            navigate("/jarvis/login");
         }
     }, [navigate, api]);
 
     const refreshAccessToken = useCallback(async () => {
         try {
             console.log("Attempting token refresh");
-            const response = await api.post('/auth/refresh');
+            const response = await api.post("/auth/refresh");
             if (response.status === 200) {
                 if (response.data && response.data.username) {
-                    setJobseeker(prevUser => ({
+                    setJarvisUser((prevUser) => ({
                         ...prevUser,
                         username: response.data.username,
-                        role: response.data.role
+                        role: response.data.role,
                     }));
                 }
                 return true;
             }
-            throw new Error('Token refresh failed');
+            throw new Error("Token refresh failed");
         } catch (err) {
             console.error("Refresh token error:", err);
-            setError(err.response?.data?.message || err.message || 'Refresh token failed');
+            setError(err.response?.data?.message || err.message || "Refresh token failed");
             await logout();
             return false;
         }
     }, [api, logout]);
 
-    const authFetch = useCallback(async (url, options = {}) => {
-        try {
-            const response = await api(url, options);
-            return response;
-        } catch (err) {
-            if (err.response?.status === 401 || err.response?.status === 403) {
-                const refreshed = await refreshAccessToken();
-                if (refreshed) {
-                    return api(url, options);
+    const authFetch = useCallback(
+        async (url, options = {}) => {
+            try {
+                const response = await api(url, options);
+                return response;
+            } catch (err) {
+                if (err.response?.status === 401 || err.response?.status === 403) {
+                    const refreshed = await refreshAccessToken();
+                    if (refreshed) {
+                        return api(url, options);
+                    }
+                    throw new Error("Authentication failed after token refresh");
                 }
-                throw new Error('Authentication failed after token refresh');
+                throw err;
             }
-            throw err;
-        }
-    }, [api, refreshAccessToken]);
+        },
+        [api, refreshAccessToken]
+    );
 
     const checkAuth = useCallback(async () => {
         setLoading(true);
         setError(null);
         try {
-            const response = await authFetch('/users/me');
-            if (response.status === 200 && response.data.role === 'jobseeker') {
-                setJobseeker(response.data);
+            const response = await authFetch("/users/me");
+            if (response.status === 200 && response.data.role === "jarvis") {
+                setJarvisUser(response.data);
                 setIsAuthenticated(true);
             } else {
-                throw new Error('Invalid role or authentication');
+                throw new Error("Invalid role or authentication");
             }
         } catch (err) {
             console.error("Auth check error:", err);
-            setError(err.response?.data?.message || err.message || 'Authentication check failed');
-            setJobseeker(null);
+            setError(err.response?.data?.message || err.message || "Authentication check failed");
+            setJarvisUser(null);
             setIsAuthenticated(false);
         } finally {
             setLoading(false);
@@ -166,55 +179,58 @@ export const JobseekerAuthProvider = ({ children }) => {
         checkAuth();
     }, [checkAuth]);
 
-    const login = useCallback(async (usernameOrEmail, password) => {
-        setLoading(true);
-        setError(null);
-        try {
-            const response = await api.post('/auth/jobseeker/login', {
-                usernameOrEmail,
-                password
-            });
+    const login = useCallback(
+        async (usernameOrEmail, password) => {
+            setLoading(true);
+            setError(null);
+            try {
+                const response = await api.post("/auth/jarvis/login", {
+                    usernameOrEmail,
+                    password,
+                });
 
-            if (response.status === 200 && response.data.role === 'jobseeker') {
-                setJobseeker(response.data);
-                setIsAuthenticated(true);
-                navigate('/profile/jobseeker');
-                return true;
+                if (response.status === 200 && response.data.role === "jarvis") {
+                    setJarvisUser(response.data);
+                    setIsAuthenticated(true);
+                    navigate("/jarvis/dashboard");
+                    return true;
+                }
+                throw new Error("Invalid role or login failed");
+            } catch (err) {
+                console.error("Login error:", err);
+                setError(err.response?.data?.message || err.message || "Login failed");
+                setJarvisUser(null);
+                setIsAuthenticated(false);
+                return false;
+            } finally {
+                setLoading(false);
             }
-            throw new Error('Invalid role or login failed');
-        } catch (err) {
-            console.error("Login error:", err);
-            setError(err.response?.data?.message || err.message || 'Login failed');
-            setJobseeker(null);
-            setIsAuthenticated(false);
-            return false;
-        } finally {
-            setLoading(false);
-        }
-    }, [api, navigate]);
+        },
+        [api, navigate]
+    );
 
     const value = {
-        user: jobseeker,
+        user: jarvisUser,
         isAuthenticated,
         login,
         logout,
         loading,
         error,
         authFetch,
-        checkAuth
+        checkAuth,
     };
 
     return (
-        <JobseekerAuthContext.Provider value={value}>
+        <JarvisAuthContext.Provider value={value}>
             {children}
-        </JobseekerAuthContext.Provider>
+        </JarvisAuthContext.Provider>
     );
 };
 
-export const useJobseekerAuth = () => {
-    const context = useContext(JobseekerAuthContext);
+export const useJarvisAuth = () => {
+    const context = useContext(JarvisAuthContext);
     if (!context) {
-        throw new Error('useJobseekerAuth must be used within a JobseekerAuthProvider');
+        throw new Error("useJarvisAuth must be used within a JarvisAuthProvider");
     }
     return context;
 };
